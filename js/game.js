@@ -1,6 +1,6 @@
 var game = {
   colorblind: (localStorage.colorblind && JSON.parse(localStorage.colorblind)) || 'false',
-  language: window.location.hash.substring(1) || 'es',
+  language: 'es',
   difficulty: 'easy',
   level: parseInt(localStorage.level, 10) || 0,
   answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
@@ -8,9 +8,7 @@ var game = {
   changed: false,
   clickedCode: null,
 
-  start: function() {
-    console.log(window.location.hash)
-    console.log(this.language)
+  start: function() { 
     // navigator.language can include '-'
     // ref: https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLanguage/language
     var requestLang = window.navigator.language.split('-')[0];
@@ -18,7 +16,7 @@ var game = {
       game.language = requestLang;
       window.location.hash = requestLang;
     }
-
+    
     game.translate();
     $('#level-counter .total').text(levels.length);
     $('#editor').show();
@@ -302,7 +300,8 @@ var game = {
       var lilypad = $('<div/>').addClass('lilypad ' + color + (this.colorblind == 'true' ? ' cb-friendly' : '')).data('color', color);
       var frog = $('<div/>').addClass('frog ' + color + (this.colorblind == 'true' ? ' cb-friendly' : '')).data('color', color);
 
-      $('<div/>').addClass('bg').css(game.transform()).appendTo(lilypad);
+      // $('<div/>').addClass('bg').css(game.transform()).appendTo(lilypad);
+      $('<div/>').addClass('bg').appendTo(lilypad);
       $('<div/>').addClass('bg animated pulse infinite').appendTo(frog);
 
       $('#background').append(lilypad);
@@ -379,6 +378,8 @@ var game = {
     var level = levels[game.level];
     var code = $('#code').val();
     var selector = level.selector || '';
+
+    console.log(selector+'<------')
     $('#pond ' +  selector).attr('style', code);
     game.saveAnswer();
   },
@@ -408,7 +409,7 @@ var game = {
     $('.frog').each(function() {
       var position = $(this).position();
       position.top = Math.floor(position.top);
-      position.left = Math.floor(position.left);
+      position.left = Math.floor(position.left)+50;
 
       var key = JSON.stringify(position);
       var val = $(this).data('color');
@@ -416,11 +417,16 @@ var game = {
     });
 
     $('.lilypad').each(function() {
+
+      console.table(frogs);
+      console.log('====')
       var position = $(this).position();
       position.top = Math.floor(position.top);
       position.left = Math.floor(position.left);
 
       var key = JSON.stringify(position);
+      console.table(key)
+      console.log('-----')
       var val = $(this).data('color');
 
       if (!(key in frogs) || frogs[key] !== val) {
@@ -461,12 +467,12 @@ var game = {
     $('.frog .bg').removeClass('pulse').addClass('bounce');
   },
 
-  transform: function() {
-    var scale = 1 + ((Math.random() / 5) - 0.2);
-    var rotate = 360 * Math.random();
+  // transform: function() {
+  //   var scale = 1 + ((Math.random() / 5) - 0.2);
+  //   var rotate = 360 * Math.random();
 
-    return {'transform': 'scale(' + scale + ') rotate(' + rotate + 'deg)'};
-  },
+  //   return {'transform': 'scale(' + scale + ') rotate(' + rotate + 'deg)'};
+  // },
 
   translate: function() {
     document.title = messages.title[game.language] || messages.title.en;
@@ -480,7 +486,7 @@ var game = {
     $('.translate').each(function() {
       var label = $(this).attr('id');
       if (messages[label]) {
-        var text = messages[label][game.language] || messages[label].en;
+        var text = messages[label][game.language] || messages[label].es;
 	  }
 
       $('#' + label).text(text);
