@@ -202,6 +202,8 @@ var game = {
     if (this.difficulty === "hard") {
       this.level = Math.floor(Math.random()* levels.length)
     } else {
+
+      console.log(this.level)
       this.level++
     }
 
@@ -210,22 +212,22 @@ var game = {
   },
 
   loadMenu: function() {
-    levels.forEach(function(level, i) {
-      var levelMarker = $('<span/>').addClass('level-marker').attr({'data-level': i, 'title': level.name}).text(i+1);
+    // levels.forEach(function(level, i) {
+    //   var levelMarker = $('<span/>').addClass('level-marker').attr({'data-level': i, 'title': level.name}).text(i+1);
 
-      if ($.inArray(level.name, game.solved) !== -1) {
-        levelMarker.addClass('solved');
-      }
+    //   if ($.inArray(level.name, game.solved) !== -1) {
+    //     levelMarker.addClass('solved');
+    //   }
 
-      levelMarker.appendTo('#levels');
-    });
+    //   levelMarker.appendTo('#levels');
+    // });
 
     $('.level-marker').on('click', function() {
       game.saveAnswer();
 
       var level = $(this).attr('data-level');
       game.level = parseInt(level, 10);
-      game.loadLevel(levels[level]);
+      // game.loadLevel(levels[level]);
     });
 
     $('#level-indicator').on('click', function() {
@@ -254,6 +256,13 @@ var game = {
   },
 
   loadLevel: function(level) {
+
+    if (level.blocked) {
+      alert("Este nivel está bloqueado. Completa el nivel anterior para desbloquearlo.");
+      return
+    }
+
+
     $('#editor').show();
     $('#share').hide();
     $('#background, #pond').removeClass('wrap').attr('style', '').empty();
@@ -434,9 +443,15 @@ var game = {
       }
     });
 
+
+
     if (correct) {
       if ($.inArray(level.name, game.solved) === -1) {
         game.solved.push(level.name);
+      }
+
+      if (game.level + 1 < levels.length) {
+        levels[game.level + 1].blocked = false;
       }
 
       $('[data-level=' + game.level + ']').addClass('solved');
@@ -530,7 +545,7 @@ var game = {
         append += trimmedToken + ': ' + pValue + ';';
       }
       else if (i + 1 < tokens.length){
-        var val = !keywords.includes(tokens[i + 1].trim()) ? tokens[i + 1].trim() : ''; // TODO: Maybe prop value validiation required
+        var val = !keywords.includes(tokens[i + 1].trim()) ? tokens[i + 1].trim() : ''; // TODO: Maybe prop value validiation required IDK
         append += trimmedToken + ': ' + val + ';';
       }
 

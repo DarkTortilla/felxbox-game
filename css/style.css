@@ -416,7 +416,6 @@ button:active {
 
 .animation {
   animation: tada 1s, pulse 2s infinite 2s;
-  animation: jump 0.5s linear;
 }
 
 #next.disabled {
@@ -771,4 +770,3 @@ button:active {
   font-weight: 600;
   line-height: 1;
 }
-

@@ -60,7 +60,8 @@ var levels = [
     board: "g",
     style: { "justify-content": "flex-end" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", 
+    blocked:false,
   },
   {
     name: "justify-content 2",
@@ -123,7 +124,7 @@ var levels = [
     board: "gy",
     style: { "justify-content": "center" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "justify-content 3",
@@ -186,7 +187,8 @@ var levels = [
     board: "gyr",
     style: { "justify-content": "space-around" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
+    
   },
   {
     name: "justify-content 4",
@@ -249,7 +251,7 @@ var levels = [
     board: "gyr",
     style: { "justify-content": "space-between" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "align-items 1",
@@ -312,7 +314,7 @@ var levels = [
     board: "gyr",
     style: { "align-items": "flex-end" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "align-items 2",
@@ -375,7 +377,7 @@ var levels = [
     board: "g",
     style: { "justify-content": "center", "align-items": "center" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "align-items 3",
@@ -438,7 +440,7 @@ var levels = [
     board: "gyr",
     style: { "justify-content": "space-around", "align-items": "flex-end" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-direction 1",
@@ -501,7 +503,7 @@ var levels = [
     board: "gyr",
     style: { "flex-direction": "row-reverse" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-direction 2",
@@ -564,7 +566,7 @@ var levels = [
     board: "gyr",
     style: { "flex-direction": "column" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-direction 3",
@@ -627,7 +629,7 @@ var levels = [
     board: "gyr",
     style: { "flex-direction": "row-reverse", "justify-content": "flex-end" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-direction 4",
@@ -690,7 +692,7 @@ var levels = [
     board: "gyr",
     style: { "flex-direction": "column", "justify-content": "flex-end" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-direction 5",
@@ -756,7 +758,7 @@ var levels = [
       "justify-content": "space-between",
     },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-direction 6",
@@ -823,7 +825,7 @@ var levels = [
       "align-items": "flex-end",
     },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "order 1",
@@ -888,7 +890,7 @@ var levels = [
     classes: { "#pond, #background": "wrap" },
     style: { order: "2" },
     before: "#pond {\n  display: flex;\n}\n\n.yellow {\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "order 2",
@@ -951,7 +953,7 @@ var levels = [
     classes: { "#pond, #background": "wrap" },
     style: { order: "-1" },
     before: "#pond {\n  display: flex;\n}\n\n.red {\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "align-self 1",
@@ -1016,7 +1018,7 @@ var levels = [
     style: { "align-self": "flex-end" },
     before:
       "#pond {\n  display: flex;\n  align-items: flex-start;\n}\n\n.yellow {\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "align-self 2",
@@ -1081,7 +1083,7 @@ var levels = [
     style: { "align-self": "flex-end", order: "2" },
     before:
       "#pond {\n  display: flex;\n  align-items: flex-start;\n}\n\n.yellow {\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-wrap 1",
@@ -1144,7 +1146,7 @@ var levels = [
     board: "ygggggr",
     style: { "flex-wrap": "wrap" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-wrap 2",
@@ -1207,7 +1209,7 @@ var levels = [
     board: "gggggrrrrryyyyy",
     style: { "flex-direction": "column", "flex-wrap": "wrap" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "flex-flow 1",
@@ -1270,7 +1272,7 @@ var levels = [
     board: "gggggrrrrryyyyy",
     style: { "flex-flow": "column wrap" },
     before: "#pond {\n  display: flex;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "align-content 1",
@@ -1334,7 +1336,7 @@ var levels = [
     classes: { "#pond, #background": "wrap" },
     style: { "align-content": "flex-start" },
     before: "#pond {\n  display: flex;\n  flex-wrap: wrap;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "align-content 2",
@@ -1397,7 +1399,7 @@ var levels = [
     classes: { "#pond, #background": "wrap" },
     style: { "align-content": "flex-end" },
     before: "#pond {\n  display: flex;\n  flex-wrap: wrap;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   {
     name: "align-content 3",
@@ -1461,7 +1463,7 @@ var levels = [
     classes: { "#pond, #background": "wrap" },
     style: { "flex-direction": "column-reverse", "align-content": "center" },
     before: "#pond {\n  display: flex;\n  flex-wrap: wrap;\n",
-    after: "}",
+    after: "}", blocked:true,
   },
   // {
   //   name: "align-content 4",
@@ -1529,7 +1531,7 @@ var levels = [
   //     "justify-content": "center",
   //   },
   //   before: "#pond {\n  display: flex;\n",
-  //   after: "}",
+  //   after: "}", blocked:true,
   // },
 ];
 
@@ -1595,5 +1597,5 @@ var levelWin = {
   classes: { "#pond, #background": "wrap" },
   style: {},
   before: "#pond {\n  display: flex;\n",
-  after: "}",
+  after: "}", blocked:true,
 };
