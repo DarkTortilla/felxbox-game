@@ -2,6 +2,28 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'SourceCodePro';
+  src: url('./SourceCodePro-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceCodePro';
+  src: url('./fonts/SourceCodePro-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceCodePro';
+  src: url('./fonts/SourceCodePro-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+
 html, body {
   min-height: 100%;
 }
@@ -32,7 +54,7 @@ body {
   display: flex;
   min-width: 600px;
   margin: 0;
-  background-color: #26336c;
+  background-color: #3be7ea;
   color: #eee;
   font-family: 'Poppins', sans-serif;
 }
@@ -41,11 +63,12 @@ body {
   width: 50%;
   min-width: 300px;
   padding: 2em;
-  border-radius: 15px;
+  /* b: 15px; */
   padding: 2rem;
   backdrop-filter: blur(10px);
   
-  background: linear-gradient(135deg, #26366c, #3be7ea);font-size: 15px;
+  background: #26336c;
+  font-size: 15px;
 }
 
 .header {
@@ -58,9 +81,10 @@ body {
 .title {
   margin: 0.5rem 0 0;
   text-transform: uppercase;
-  font-family: 'Baloo 2', cursive;
+  font-family: "Anton", serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 32px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0);
 }
 
 pre {
@@ -186,17 +210,20 @@ a:hover {
 #instructions p,
 #instructions ul {
 	/* helps prevent the difficulty animation from jumping */
+  font-family:'SourceCodePro', monospace;
+  
 	margin: 0;
   padding-bottom: 1em;
 }
 
 #editor {
   position: relative;
+
 }
 
 #editor,
 pre {
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'SourceCodePro', monospace;
   font-size: 16px;
   line-height: 1.5;
   color: #777;
@@ -503,7 +530,7 @@ button:active {
 #background {
   z-index: 10;
   border-radius: 0 0 0 10px;
-  background-color: #1F5768;
+  background-color: #3be7ea;
 }
 
 #pond {
@@ -654,7 +681,7 @@ button:active {
   
 }
 .frog{
-  transform: translateX(-50px);
+  transform: translateX(-30px);
 }
 
 .lilypad.green .bg {

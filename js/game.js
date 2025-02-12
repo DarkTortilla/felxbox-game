@@ -168,10 +168,10 @@ var game = {
 
     $(window).on('beforeunload', function() {
       game.saveAnswer();
-      localStorage.setItem('level', game.level);
-      localStorage.setItem('answers', JSON.stringify(game.answers));
-      localStorage.setItem('solved', JSON.stringify(game.solved));
-      localStorage.setItem('colorblind', JSON.stringify(game.colorblind));
+      // localStorage.setItem('level', game.level);
+      // localStorage.setItem('answers', JSON.stringify(game.answers));
+      // localStorage.setItem('solved', JSON.stringify(game.solved));
+      // localStorage.setItem('colorblind', JSON.stringify(game.colorblind));
     }).on('hashchange', function() {
       game.language = window.location.hash.substring(2) || 'es';
       game.translate();
@@ -256,12 +256,6 @@ var game = {
   },
 
   loadLevel: function(level) {
-
-    if (level.blocked) {
-      alert("Este nivel está bloqueado. Completa el nivel anterior para desbloquearlo.");
-      return
-    }
-
 
     $('#editor').show();
     $('#share').hide();
@@ -418,7 +412,7 @@ var game = {
     $('.frog').each(function() {
       var position = $(this).position();
       position.top = Math.floor(position.top);
-      position.left = Math.floor(position.left)+50;
+      position.left = Math.floor(position.left)+30;
 
       var key = JSON.stringify(position);
       var val = $(this).data('color');
@@ -450,10 +444,7 @@ var game = {
         game.solved.push(level.name);
       }
 
-      if (game.level + 1 < levels.length) {
-        levels[game.level + 1].blocked = false;
-      }
-
+    
       $('[data-level=' + game.level + ']').addClass('solved');
       $('#next').removeClass('disabled').addClass('animated animation');
     } else {
@@ -482,19 +473,12 @@ var game = {
     $('.frog .bg').removeClass('pulse').addClass('bounce');
   },
 
-  // transform: function() {
-  //   var scale = 1 + ((Math.random() / 5) - 0.2);
-  //   var rotate = 360 * Math.random();
-
-  //   return {'transform': 'scale(' + scale + ') rotate(' + rotate + 'deg)'};
-  // },
-
   translate: function() {
     document.title = messages.title[game.language] || messages.title.en;
     $('html').attr('lang', game.language);
 
     var level = $('#editor').is(':visible') ? levels[game.level] : levelWin;
-    var instructions = level.instructions[game.language] || level.instructions.en;
+    var instructions = level.instructions[game.language] || level.instructions.es;
     $('#instructions').html(instructions);
     game.loadDocs();
 
