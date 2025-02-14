@@ -260,15 +260,13 @@ var game = {
   loadLevel: function(level) {
     console.log(level.id,"hola");
 
-    if(level.id==5){
-      alert('Felicidades camarada, has superado el primer nivel, sin embargo los malechores aun siguen sueltos.');
+    if(level.id==6){
+      alert('Felicidades, has superado los primeros 5 nivles, y con ello has ganado una beca del 25% en nuestro proximo bootcamp en marzo. Sin embargo los malechores aun siguen sueltos. ¿Deseas continuar?');
 
     }
-    else if(level.id==10){
-      alert('Reuerda recargar cuando te quede poca municion');
-    }
-    else if(level.id==15){
-      alert('en el campo de flexbox nunca tantos le debieron tanto a tan pocos MR.CSS.\n Has superado los 3 niveles');
+    else if(level.id==11){
+      alert('en el campo de flexbox nunca tantos le debieron tanto a tan pocos MR.CSS.\n ¡Felicidades has completado 10 niveles!');
+      
     }
     
 
