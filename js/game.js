@@ -212,6 +212,8 @@ var game = {
   },
 
   loadMenu: function() {
+    
+
     // levels.forEach(function(level, i) {
     //   var levelMarker = $('<span/>').addClass('level-marker').attr({'data-level': i, 'title': level.name}).text(i+1);
 
@@ -256,6 +258,19 @@ var game = {
   },
 
   loadLevel: function(level) {
+    console.log(level.id,"hola");
+
+    if(level.id==5){
+      alert('Felicidades camarada, has superado el primer nivel, sin embargo los malechores aun siguen sueltos.');
+
+    }
+    else if(level.id==10){
+      alert('Reuerda recargar cuando te quede poca municion');
+    }
+    else if(level.id==15){
+      alert('en el campo de flexbox nunca tantos le debieron tanto a tan pocos MR.CSS.\n Has superado los 3 niveles');
+    }
+    
 
     $('#editor').show();
     $('#share').hide();
@@ -267,7 +282,7 @@ var game = {
     $('#after').text(level.after);
     $('#next').removeClass('animated animation').addClass('disabled');
 
-    var instructions = level.instructions[game.language] || level.instructions.en;
+    var instructions = level.instructions[game.language] || level.instructions.es;
     $('#instructions').html(instructions);
 
     $('.arrow.disabled').removeClass('disabled');
